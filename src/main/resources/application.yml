@@ -1,0 +1,41 @@
+management: 
+  endpoint: 
+    health: 
+      show-details: always 
+  endpoints: 
+    web: 
+      exposure: 
+        include: '*'
+spring:
+  gamedb:
+    datasource: 
+      -
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        jdbcUrl: jdbc:sqlserver://host:port;databaseName=GameDB
+        username: username
+        password: password
+        world: 1
+      -
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        jdbcUrl: jdbc:sqlserver://host:port;databaseName=GameDB
+        username: username
+        password: password
+        world: 2
+      -
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        jdbcUrl: jdbc:sqlserver://host:port;databaseName=GameDB
+        username: username
+        password: password
+        world: 3
+      -
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        jdbcUrl: jdbc:sqlserver://host:port;databaseName=GameDB
+        username: username
+        password: password
+        world: 4
+      -
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        jdbcUrl: jdbc:sqlserver://host:port;databaseName=GameDB
+        username: username
+        password: password
+        world: 5
