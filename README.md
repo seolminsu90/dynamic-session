@@ -7,7 +7,8 @@ sqlsessiontemplate을 설정파일을 다양하게 조절해서 쓸 수 있도�
 
 ## 더 세련된 방법
 
-- AbstractRoutingDataSource 구현
+- AbstractRoutingDataSource 구현하는 방식
+- datasource 제외한 다른 빈도 1개로 처리가 가능하다는 장점. 보기 편하다? 
 
 ```bash
 public class MyRoutingDataSource extends AbstractRoutingDataSource {
@@ -35,6 +36,7 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
 	}
 }
 ```
+- 키 관리용 쓰레드 로컬 관리 구현체
 ```bash
 public class StaticThreadLocal {
 	private static ThreadLocal<String> world = new ThreadLocal<>();
