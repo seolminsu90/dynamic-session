@@ -11,7 +11,7 @@ sqlsessiontemplate을 설정파일을 다양하게 조절해서 쓸 수 있도�
 
 ```bash
 public class MyRoutingDataSource extends AbstractRoutingDataSource {
-  // 이 메서드를 통해 데이터 소스를 선택하는 키(objcet)를 선택하는 방법을 정한다.
+  	// 이 메서드를 통해 데이터 소스를 선택하는 키(objcet)를 선택하는 방법을 정한다.
 	@Override
 	protected Object determineCurrentLookupKey() {
         // master/slave cluster 설정 시 
@@ -29,7 +29,7 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
           다음과 같이 사용
           StaticThreadLocal.set("world1"); - ThreadLocal 월드 값 설정
           routingMapper.crudQuery(); - 매퍼 쿼리 실행
-          - 필요에 따라 ThreadLocal remove() 처리
+          필요에 따라 ThreadLocal remove() 처리
         */
         return StaticThreadLocal.get();
 	}
