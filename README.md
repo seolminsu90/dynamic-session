@@ -35,6 +35,20 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
 	}
 }
 ```
+```bash
+public class StaticThreadLocal {
+	private static ThreadLocal<String> world = new ThreadLocal<>();
+	public String get(){
+		return world.get();
+	}
+	public void set(String worldId){
+		world.set(worldId);
+	}
+	public void remove(){
+		world.remove();
+	}
+}
+```
 
 - 데이터 소스 구현
 ```bash
@@ -60,13 +74,6 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
         return new LazyConnectionDataSourceProxy(dataSource);
     }
     
-    @Bean(name = "transactionManager")
-    public PlatformTransactionManager transactionManager(@Qualifier("routingLazyDataSource") DataSource dataSource) {
-        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
-        transactionManager.setDataSource(dataSource);
-        return transactionManager;
-    }
-    
     public HikariDataSource createDatasource() {
     	
         // 데이터 connection 정보
@@ -74,6 +81,6 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
         return new HikariDataSource(config);
     }
     
-    ~~ SqlSessionFactory... SqlSessionTemplate... TransactionManager... 는 위의 RoutingDataSource를 Qualifier 하여 이어주면 된다.
-    ~~ Mapper 등도 여기에서 물려주면 될 듯. ( 안해봄 )
+    ~~ SqlSessionFactory... SqlSessionTemplate(mybatis)... TransactionManager... 는 위의 RoutingDataSource를 Qualifier 하여 이어주면 된다.
+    ~~ Mapper 등도 여기에서 경로 설정 해주거나.. @MapperScan @Mapper 사용
 ```
